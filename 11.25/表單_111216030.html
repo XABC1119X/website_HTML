@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>NTUE employee information</title>
+      <script>
+         // 自動格式化電話號碼並檢查長度
+         function formatPhoneNumber() {
+             const phoneInput = document.getElementById("phone");
+             let value = phoneInput.value;
+
+             // 移除非數字字符
+             value = value.replace(/[^\d]/g, "");
+
+             // 長度檢查：不超過 10 位數字
+             if (value.length > 10) {
+                 alert("電話號碼格式不對！");
+                 value = value.slice(0, 10);
+             }
+
+             // 自動插入 "-"
+             if (value.length > 4 && value.length <= 7) {
+                 value = value.slice(0, 4) + "-" + value.slice(4);
+             } else if (value.length > 7) {
+                 value = value.slice(0, 4) + "-" + value.slice(4, 7) + "-" + value.slice(7);
+             }
+
+             phoneInput.value = value;
+         }
+
+         // 用戶端驗證
+         function validateForm(event) {
+             const phoneInput = document.getElementById("phone").value;
+             const emailInput = document.getElementById("Email").value;
+
+             const phoneRegex = /^\d{4}-\d{3}-\d{3}$/;
+             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+             if (!phoneRegex.test(phoneInput)) {
+                 alert("請輸入正確格式的行動電話號碼 (格式: 1234-567-890)");
+                 event.preventDefault();
+                 return false;
+             }
+
+             if (!emailRegex.test(emailInput)) {
+                 alert("請輸入有效的 Email 格式 (例如: example@email.com)");
+                 event.preventDefault();
+                 return false;
+             }
+             return true;
+         }
+      </script>
+   </head>
+   <body>
+      <h2>新人報到表單</h2>
+      <form action="/register" style="font-size: 16px; font-weight: 700;" onsubmit="return validateForm(event);">
+         <fieldset>
+            <legend>個人資料</legend>
+            <label for="firstname">姓名 :</label>
+            <input type="text" id="firstname" name="firstname" required>
+            <br/><br/>
+            <label for="start">生日 :</label>
+            <input type="date" id="start" name="start" required>
+            <br/><br/>    
+            <label for="phone">行動電話號碼 :</label>
+            <input type="text" id="phone" name="phone" oninput="formatPhoneNumber()" required>
+            <small>填寫格式: 1234-567-890</small>
+            <br/><br/>
+            <label for="Email">Email :</label>
+            <input type="email" id="Email" name="Email" placeholder="example@email.com" required>
+         </fieldset>
+         <br/><br/>
+         <fieldset>
+            <legend>教育程度</legend>
+            <label for="hdegree">最高學歷 :</label>
+            <select name="hdegree" required>
+               <option value="" disabled selected>請選擇</option>
+               <option>博士</option>
+               <option>碩士</option>
+               <option>大學</option>
+               <option>高中</option>
+            </select>
+            <br/><br/>
+            <label for="Collegename">學校名稱 :</label>
+            <input type="text" id="Collegename" name="Collegename" required>
+            <br/><br/>
+            <label for="Collegestage">畢業狀況 :</label> 
+            <input class="form-check-input" type="radio" name="graduationStatus" id="graduated" value="已畢業" required>
+            <label class="form-check-label" for="graduated">已畢業</label>
+            <input class="form-check-input" type="radio" name="graduationStatus" id="inProgress" value="肄業">
+            <label class="form-check-label" for="inProgress">肄業</label>
+         </fieldset>
+         <br/><br/>
+         <fieldset>
+            <legend>職位資訊</legend>
+            <label for="emo">部門 :</label>
+            <select name="emo" required>
+               <option value="" disabled selected>請選擇</option>
+               <option>人力資源部</option>
+               <option>資訊技術部</option>
+               <option>財務部</option>
+               <option>法務部</option>
+            </select>
+            <br/><br/>
+            <label for="sex">性別 :</label> 
+            <input class="form-check-input" type="radio" name="gender" id="male" value="男" required>
+            <label class="form-check-label" for="male">男</label>
+            <input class="form-check-input" type="radio" name="gender" id="female" value="女">
+            <label class="form-check-label" for="female">女</label>
+         </fieldset>
+         <br/><br/>
+         <input type="submit" value="提交">
+      </form>
+   </body>
+</html>

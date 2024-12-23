@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+   <html>
+      <head>
+            <title> Registration Form </title>
+      </head>
+      <body>
+         <h2>新人報到表單</h2>
+         <form action="/register" style="font-size: 16px;font-weight: 700;">
+            <fieldset>
+            <legend>個人資料</legend>
+            <label for="firstname">姓名 :</label>
+            <input type="text" id="firstname" name="firstname">
+            <br/><br/>
+            <label for="start">生日 :</label>
+            <input type="date" id="start" name="start">
+            <br/><br/>    
+            <label for="phone">行動電話號碼 :</label>
+            <input type="text" id="phone" name="phone">
+            <small>填寫格式: 1234-567-890</small>
+            <br/><br/>
+            <label for="Email">Email :</label>
+            <input type="Email" id="Email" name="Email" placeholder="example@email.com">
+        </fieldset>
+        <br/><br/>
+        <fieldset>
+            <legend>教育程度</legend>
+            <label for="hdegree">最高學歷 :</label>
+            <select name="hdegree">
+                <option value="" disabled selected>請選擇</option>
+                <option >博士</option>
+                <option >碩士</option>
+                <option >大學</option>
+                <option >高中</option>
+            </select>
+            <br/><br/>
+            <label for="Collegename">學校名稱 :</label>
+            <input type="text" id="Collegename" name="Collegename">
+            <br/><br/>
+            <label for="Collegestage">畢業狀況 :</label> 
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                已畢業  
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                肄業
+           
+        </fieldset>
+        <br/><br/>
+        <fieldset>
+            <legend>職位資訊</legend>
+            <label for="emo">部門 :</label>
+            <select name="emo">
+                <option value="" disabled selected>請選擇</option>
+                <option >人力資源部</option>
+                <option >資訊技術部</option>
+                <option >財務部</option>
+                <option >法務部</option>
+            </select>
+            <br/><br/>
+            <label for="sex">性別 :</label> 
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                男 
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                女
+           
+        </fieldset>
+        <br/><br/>
+        <input type="submit" value="提交">
+
+         </form>
+      </body>
+</html>
